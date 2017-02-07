@@ -16,7 +16,7 @@
 
 using namespace std;
 
-int deckamount = 2; // Amount of decks being used
+int deckamount = 1; // Amount of decks being used
 int cardamount = 52 * deckamount; // Total number of cards being used
 
 
@@ -69,16 +69,14 @@ void Fxn_A(vector<Deck>* testdeckA){ // check for duplicates by comparing cards 
     
     else{
         
-        for(int i = 0; i < cardamount; i++){
+        for(int i = 1; i < cardamount; i++){
             
-            for( int j = i+1; j < cardamount; j++){
-                
+    
                 /* Assigning suits and ranks to the two test cards */
-                    one.suit = testdeckA->at(i).suit;
-                    one.rank = testdeckA->at(i).rank;
-                    two.suit = testdeckA->at(j).suit;
-                    two.rank = testdeckA->at(j).rank;
-                }// end else
+                    one.suit = testdeckA->at(0).suit;
+                    one.rank = testdeckA->at(0).rank;
+                    two.suit = testdeckA->at(i).suit;
+                    two.rank = testdeckA->at(i).rank;
             
             
              /* initializing my booleans */
