@@ -32,30 +32,28 @@ public:
     int rank;
 }; // end class Card
 
-void deckshuffle(vector<Deck>* deck){ // Shuffle function
+void deckshuffle(vector<Deck>* pdeck){ // Shuffle function
     
-    for(int i = 0; i < cardamount; i++){
+    /* These two lines are taking two random positions within the bounds of the amount of cards there are */
+    
         
-        /* These two lines are taking two random positions within the bounds of the amount of cards there are */
-        int randone = rand() % ( cardamount );
-        int randtwo = rand() % ( cardamount );
-        
-        for(int i = 0; i < cardamount; i++){
-            Deck swapcard; // Creating a class object that will be a temporary placeholder so that I can switch cards around to shuffle them
+        for(int i = 0; i < 100000; i++){
+            int randone = rand() % ( cardamount );
+            int randtwo = rand() % ( cardamount );
+            Card swapcard; // Creating a class object that will be a temporary placeholder so that I can switch cards around to shuffle them
             
             /* Shuffling the card ranks */
             
-            swapcard.rank = deck->at(randone).rank; // defining the temporary card with the information from random position one
-            deck->at(randone).rank = deck->at(randtwo).rank; // overwriting the random position one with the information from random position two
-            deck->at(randtwo).rank = swapcard.rank; // overwriting the random position two with the stored information on the temporary card
+            swapcard.rank = pdeck->at(randone).rank; // defining the temporary card with the information from random position one
+            pdeck->at(randone).rank = pdeck->at(randtwo).rank; // overwriting the random position one with the information from random position two
+            pdeck->at(randtwo).rank = swapcard.rank; // overwriting the random position two with the stored information on the temporary card
             
             /* Shuffling the card suits  - same as above, but with suits instead of ranks */
             
-            swapcard.suit = deck->at(randone).suit;
-            deck->at(randone).suit = deck->at(randtwo).suit;
-            deck->at(randtwo).suit = swapcard.suit;
+            swapcard.suit = pdeck->at(randone).suit;
+            pdeck->at(randone).suit = pdeck->at(randtwo).suit;
+            pdeck->at(randtwo).suit = swapcard.suit;
         } // end for
-    } // end for
 } // end void
 
 
@@ -221,7 +219,7 @@ int main() {
     
     /* Creating and printing the shuffled deck */
     ofstream myfile;
-    myfile.open("ME493_HW1.txt");
+    myfile.open("ME493_HW1_Gorsiski_Kyle.txt");
     for(int i = 0; i < cardamount; i++){
           myfile << "Position: " << i << "\t Suit: " << pdeck->at(i).suit << "\t Rank: " << pdeck->at(i).rank << endl;
     }
